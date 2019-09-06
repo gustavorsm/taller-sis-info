@@ -1,0 +1,25 @@
+<div style='height:800px; background-image: url("assets/img/parque1.jpg");'>
+  <div class="col-md-6 col-md-offset-3">
+      <h2 style="color:white">Login</h2>
+      <form name="login">
+        <div class="form-group">
+          <label for="name" style="color:white">Usuario</label>
+          <input type="text" class="form-control" name="name" (input)="usernameValidator=true; usernameError=false"
+            [(ngModel)]="usuario.nombre">
+          <div *ngIf="!firstTime && usernameError" class="help-block" style="color: tomato">El nombre de usuario es obligatorio</div>
+        </div>
+        <div class="form-group">
+          <label for="contrasena" style="color:white">Contraseña</label>
+          <input type="contrasena" class="form-control" name="contrasena" (input)="passwordValidator=true; passwordError=false"
+            [(ngModel)]="usuario.contrasena">
+          <div *ngIf="!firstTime && passwordError" class="help-block" style="color: tomato">La contraseña es obligatoria</div>
+        </div>
+        <div class="form-group">
+          <button type="button" [disabled]="loading" class="btn btn-primary" (click)="login()">Login</button>
+          <button type="button" class="btn btn-primary" (click)="registrarse()">Registrarse</button>
+        </div>
+        <div *ngIf="errorMessage" class="help-block" style="color: tomato">{{errorMessage}}</div>
+        <div *ngIf="!firstTime && (usernameError || passwordError)" class="help-block" style="color: tomato">Por favor introduzca todos los campos</div>
+      </form>
+    </div>
+</div>

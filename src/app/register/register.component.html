@@ -1,0 +1,41 @@
+<div style='height:800px; background-image: url("assets/img/parque1.jpg");'>
+  <div class="col-md-6 col-md-offset-3">
+      <h2 style="color:white">Registrar</h2>
+      <form name="form" #registryAccountForm='ngForm'>
+        <div class="form-group">
+          <label for="nombre" style="color:white">Nombre De Usuario</label>
+          <input type="text" class="form-control" required name="nombre" (input)="nombreValida=true; nombreErronea=false" 
+            [(ngModel)]="usuario.nombre">
+        </div>
+        <div class="form-group">
+          <label for="contrasena" style="color:white">Apellido</label>
+          <input type="contrasena" class="form-control" required name="apellido"
+            [(ngModel)]="usuario.apellido">
+        </div>
+        <div class="form-group">
+          <label for="correo" style="color:white">Correo</label>
+          <input type="correo" class="form-control" required name="correo"
+            [(ngModel)]="usuario.correo">
+        </div>
+        <div class="form-group">
+          <label for="fecha"style="color:white">Fecha De Nacimiento</label>
+          <input type="fecha" class="form-control" required name="fecha"
+            [(ngModel)]="usuario.fecha" pattern="^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$">
+        </div>
+        <div class="form-group">
+          <label for="contrasena"style="color:white">Contraseña</label>
+          <input type="contrasena" class="form-control" required name="contrasena" (input)="contrasenaValida=true; contraseErronea=false"
+            [(ngModel)]="usuario.contrasena">
+        </div>
+        <div class="form-group">
+          <label for="contrasenaConfirmacion" style="color:white">Confirmar contraseña</label>
+          <input type="contrasena" class="form-control" required name="Confirmar" (input)="confirmacionValida=true; confirmacionErronea=false"
+            [(ngModel)]="usuario.contrasenaConfirmacion">
+        </div>
+        <div class="form-group">
+          <button [disabled]="loading || !registryAccountForm.valid" class="btn btn-primary" (click)="agregarUsuario()">Registrarse</button>
+          <a [routerLink]="['/login']" class="btn btn-link">Cancelar</a>
+        </div>
+      </form>
+    </div>
+</div>
